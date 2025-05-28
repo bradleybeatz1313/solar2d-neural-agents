@@ -264,3 +264,15 @@ function M.clone(network)
 end
 
 return M
+
+
+--- Returns the index of the output with the highest activation.
+--- @param outputs table Array of output activations
+--- @return number Index (1-based) of the argmax output
+function M.argmax(outputs)
+    local best_idx, best_val = 1, -math.huge
+    for i, v in ipairs(outputs) do
+        if v > best_val then best_val = v; best_idx = i end
+    end
+    return best_idx
+end
