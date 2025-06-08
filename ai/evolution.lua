@@ -215,3 +215,21 @@ function M.load(data)
 end
 
 return M
+
+
+--- Returns the top N networks from a population by fitness.
+--- @param population table Array of network tables
+--- @param n number Number of elites to select
+--- @return table Array of top-n networks (sorted descending)
+function M.top_n(population, n)
+    local sorted = {}
+    for _, net in ipairs(population) do
+        table.insert(sorted, net)
+    end
+    table.sort(sorted, function(a, b) return a.fitness > b.fitness end)
+    local elites = {}
+    for i = 1, math.min(n, #sorted) do
+        table.insert(elites, sorted[i])
+    end
+    return elites
+end
