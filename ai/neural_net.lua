@@ -276,3 +276,22 @@ function M.argmax(outputs)
     end
     return best_idx
 end
+
+
+--- Normalize a set of inputs to [-1, 1] given their expected range.
+--- @param inputs table Raw input values
+--- @param min_vals table Per-input minimum expected values
+--- @param max_vals table Per-input maximum expected values
+--- @return table Normalized inputs
+function M.normalize(inputs, min_vals, max_vals)
+    local result = {}
+    for i = 1, #inputs do
+        local range = max_vals[i] - min_vals[i]
+        if range ~= 0 then
+            result[i] = (inputs[i] - min_vals[i]) / range * 2 - 1
+        else
+            result[i] = 0
+        end
+    end
+    return result
+end
