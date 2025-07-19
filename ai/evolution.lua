@@ -233,3 +233,28 @@ function M.top_n(population, n)
     end
     return elites
 end
+
+
+--- Compute average fitness across a population.
+--- @param population table Array of network tables
+--- @return number Average fitness
+function M.average_fitness(population)
+    if #population == 0 then return 0 end
+    local total = 0
+    for _, net in ipairs(population) do total = total + net.fitness end
+    return total / #population
+end
+
+--- Compute fitness standard deviation.
+--- @param population table Array of network tables
+--- @return number Standard deviation
+function M.fitness_std(population)
+    local avg = M.average_fitness(population)
+    if #population < 2 then return 0 end
+    local variance = 0
+    for _, net in ipairs(population) do
+        local diff = net.fitness - avg
+        variance = variance + diff * diff
+    end
+    return math.sqrt(variance / (#population - 1))
+end
