@@ -72,3 +72,12 @@ solar2d-neural-agents/
 ## 📄 License
 
 MIT
+
+---
+
+## Quick Start
+
+1. Open the project in Solar2D (Corona SDK)
+2. Press Run -- agents spawn and begin evolving immediately
+3. Watch neural fitness improve across generations in the console
+4. Tweak hyperparameters in `config.lua` (mutation rate, population size, etc.)
