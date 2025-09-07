@@ -295,3 +295,18 @@ function M.normalize(inputs, min_vals, max_vals)
     end
     return result
 end
+
+
+--- Returns the total number of trainable parameters in the network.
+--- @param network table Neural network
+--- @return number
+function M.param_count(network)
+    local count = 0
+    for i = 1, #network.weights do
+        for j = 1, #network.weights[i] do
+            count = count + 1
+            count = count + #network.weights[i][j]
+        end
+    end
+    return count
+end
