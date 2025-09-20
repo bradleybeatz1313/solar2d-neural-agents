@@ -258,3 +258,20 @@ function M.fitness_std(population)
     end
     return math.sqrt(variance / (#population - 1))
 end
+
+
+--- Tournament selection: pick winner of k random agents by fitness.
+--- @param population table Agent population
+--- @param k number Tournament size (default 3)
+--- @return table Selected network
+function M.tournament_select(population, k)
+    k = k or 3
+    local best = nil
+    for _ = 1, k do
+        local candidate = population[math.random(#population)]
+        if best == nil or candidate.fitness > best.fitness then
+            best = candidate
+        end
+    end
+    return best
+end
