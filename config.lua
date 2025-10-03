@@ -22,3 +22,8 @@ Config.CROSSOVER_PROB    = 0.6    -- probability of crossover vs. cloning
 Config.INPUT_SIZE  = 8   -- sensor inputs per agent
 Config.HIDDEN_SIZES = {16, 12}  -- hidden layer sizes
 Config.OUTPUT_SIZE = 4   -- action outputs
+
+-- Display
+Config.SHOW_SENSORS    = false   -- draw sensor rays on screen
+Config.SHOW_FITNESS    = true    -- display fitness above each agent
+Config.SHOW_GENERATION = true    -- show current generation counter
