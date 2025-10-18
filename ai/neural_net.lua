@@ -310,3 +310,20 @@ function M.param_count(network)
     end
     return count
 end
+
+
+--- Compute the L2 norm of all weights (useful for regularization monitoring).
+--- @param network table Neural network
+--- @return number L2 norm
+function M.weight_norm(network)
+    local sum_sq = 0
+    for i = 1, #network.weights do
+        for j = 1, #network.weights[i] do
+            for k = 1, #network.weights[i][j] do
+                local w = network.weights[i][j][k]
+                sum_sq = sum_sq + w * w
+            end
+        end
+    end
+    return math.sqrt(sum_sq)
+end
