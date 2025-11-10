@@ -81,3 +81,13 @@ MIT
 2. Press Run -- agents spawn and begin evolving immediately
 3. Watch neural fitness improve across generations in the console
 4. Tweak hyperparameters in `config.lua` (mutation rate, population size, etc.)
+
+---
+
+## Neuroevolution Algorithm
+
+1. **Initialize**: Random population of N agents with Xavier-initialized weights
+2. **Evaluate**: Each agent runs its neural network for one full episode; fitness = survival time * distance traveled
+3. **Select**: Elitism (top-k copied) + Tournament selection for parents
+4. **Reproduce**: Uniform crossover of parent weights, then Gaussian mutation
+5. **Replace**: New generation replaces old; repeat from step 2
