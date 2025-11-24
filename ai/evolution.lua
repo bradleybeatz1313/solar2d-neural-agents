@@ -275,3 +275,24 @@ function M.tournament_select(population, k)
     end
     return best
 end
+
+
+--- Rank-based selection: assigns selection probability proportional to rank.
+--- Less sensitive to fitness scale than roulette-wheel selection.
+--- @param population table Agent population (sorted by fitness descending preferred)
+--- @return table Selected network
+function M.rank_select(population)
+    local n = #population
+    local sorted = {}
+    for _, net in ipairs(population) do table.insert(sorted, net) end
+    table.sort(sorted, function(a, b) return a.fitness > b.fitness end)
+    -- Rank weights: rank 1 gets weight n, rank n gets weight 1
+    local total = n * (n + 1) / 2
+    local roll = math.random() * total
+    local cumsum = 0
+    for rank, net in ipairs(sorted) do
+        cumsum = cumsum + (n - rank + 1)
+        if roll <= cumsum then return net end
+    end
+    return sorted[#sorted]
+end
