@@ -27,3 +27,8 @@ Config.OUTPUT_SIZE = 4   -- action outputs
 Config.SHOW_SENSORS    = false   -- draw sensor rays on screen
 Config.SHOW_FITNESS    = true    -- display fitness above each agent
 Config.SHOW_GENERATION = true    -- show current generation counter
+
+-- Fitness function weights
+Config.FITNESS_SURVIVAL_WEIGHT  = 0.4
+Config.FITNESS_DISTANCE_WEIGHT  = 0.4
+Config.FITNESS_EFFICIENCY_WEIGHT = 0.2
