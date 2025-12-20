@@ -327,3 +327,17 @@ function M.weight_norm(network)
     end
     return math.sqrt(sum_sq)
 end
+
+
+--- Zero-initialize all weights and biases (for debugging/ablation).
+--- @param network table Network to zero
+function M.zero_weights(network)
+    for i = 1, #network.weights do
+        for j = 1, #network.weights[i] do
+            network.biases[i][j] = 0
+            for k = 1, #network.weights[i][j] do
+                network.weights[i][j][k] = 0
+            end
+        end
+    end
+end
