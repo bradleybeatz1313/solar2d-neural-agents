@@ -296,3 +296,26 @@ function M.rank_select(population)
     end
     return sorted[#sorted]
 end
+
+
+--- Compute diversity score: average pairwise L2 distance between network weights.
+--- High diversity = healthy population; low = premature convergence.
+--- @param population table Array of networks
+--- @param sample_size number Max pairs to sample (default 20 for performance)
+--- @return number Average pairwise distance
+function M.diversity_score(population, sample_size)
+    local nn = require("ai.neural_net")
+    sample_size = sample_size or 20
+    local total, count = 0, 0
+    for _ = 1, sample_size do
+        local a = population[math.random(#population)]
+        local b = population[math.random(#population)]
+        local pa = nn.serialize(a)
+        local pb = nn.serialize(b)
+        local dist = 0
+        for i = 1, #pa do dist = dist + (pa[i] - pb[i])^2 end
+        total = total + math.sqrt(dist)
+        count = count + 1
+    end
+    return count > 0 and total / count or 0
+end
