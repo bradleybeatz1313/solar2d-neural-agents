@@ -32,3 +32,7 @@ Config.SHOW_GENERATION = true    -- show current generation counter
 Config.FITNESS_SURVIVAL_WEIGHT  = 0.4
 Config.FITNESS_DISTANCE_WEIGHT  = 0.4
 Config.FITNESS_EFFICIENCY_WEIGHT = 0.2
+
+-- Checkpointing
+Config.SAVE_BEST_EVERY = 10   -- save best network every N generations
+Config.CHECKPOINT_PATH = "checkpoints/"
