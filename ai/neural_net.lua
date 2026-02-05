@@ -341,3 +341,6 @@ function M.zero_weights(network)
         end
     end
 end
+
+
+M.VERSION = "1.2.0"
