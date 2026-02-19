@@ -319,3 +319,6 @@ function M.diversity_score(population, sample_size)
     end
     return count > 0 and total / count or 0
 end
+
+
+M.VERSION = "1.2.0"
