@@ -91,3 +91,17 @@ MIT
 3. **Select**: Elitism (top-k copied) + Tournament selection for parents
 4. **Reproduce**: Uniform crossover of parent weights, then Gaussian mutation
 5. **Replace**: New generation replaces old; repeat from step 2
+
+---
+
+## Configuration Reference
+
+Edit `config.lua` to tune the experiment:
+
+| Key | Default | Description |
+|-----|---------|-------------|
+| POPULATION_SIZE | 30 | Agents per generation |
+| MUTATION_RATE | 0.12 | Weight mutation probability |
+| MUTATION_STRENGTH | 0.25 | Gaussian noise std dev |
+| ELITISM_COUNT | 4 | Top agents copied unchanged |
+| CROSSOVER_PROB | 0.6 | Crossover vs clone probability |
