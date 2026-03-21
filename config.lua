@@ -36,3 +36,7 @@ Config.FITNESS_EFFICIENCY_WEIGHT = 0.2
 -- Checkpointing
 Config.SAVE_BEST_EVERY = 10   -- save best network every N generations
 Config.CHECKPOINT_PATH = "checkpoints/"
+
+-- Evolution strategy
+Config.SELECTION_STRATEGY = "tournament"  -- "tournament" | "rank" | "roulette"
+Config.TOURNAMENT_K = 3
