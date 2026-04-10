@@ -23,3 +23,5 @@ settings = {
 
     plugins = {},
 }
+
+-- build version: 1.2.0
