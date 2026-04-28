@@ -105,3 +105,5 @@ Edit `config.lua` to tune the experiment:
 | MUTATION_STRENGTH | 0.25 | Gaussian noise std dev |
 | ELITISM_COUNT | 4 | Top agents copied unchanged |
 | CROSSOVER_PROB | 0.6 | Crossover vs clone probability |
+
+<!-- last updated 2026-04-28 -->
