@@ -44,3 +44,8 @@ Config.TOURNAMENT_K = 3
 -- Logging
 Config.LOG_EVERY_N_GENS = 5   -- print stats every N generations
 Config.LOG_DIVERSITY    = true  -- include diversity score in output
+
+-- Adaptive mutation
+Config.ADAPTIVE_MUTATION = true   -- scale mutation by diversity score
+Config.MIN_MUTATION_STRENGTH = 0.05
+Config.MAX_MUTATION_STRENGTH = 0.5
