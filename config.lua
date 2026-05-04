@@ -40,3 +40,7 @@ Config.CHECKPOINT_PATH = "checkpoints/"
 -- Evolution strategy
 Config.SELECTION_STRATEGY = "tournament"  -- "tournament" | "rank" | "roulette"
 Config.TOURNAMENT_K = 3
+
+-- Logging
+Config.LOG_EVERY_N_GENS = 5   -- print stats every N generations
+Config.LOG_DIVERSITY    = true  -- include diversity score in output
