@@ -107,3 +107,14 @@ Edit `config.lua` to tune the experiment:
 | CROSSOVER_PROB | 0.6 | Crossover vs clone probability |
 
 <!-- last updated 2026-04-28 -->
+
+---
+
+## Algorithm Variants
+
+| Variant | Config | Description |
+|---------|--------|-------------|
+| Standard GA | default | Elitism + tournament + uniform crossover |
+| Rank-based | SELECTION_STRATEGY=rank | Less scale-sensitive than roulette |
+| Adaptive mutation | ADAPTIVE_MUTATION=true | Scales noise with population diversity |
+| With speciation | SPECIATION_ENABLED=true | NEAT-style species isolation |
