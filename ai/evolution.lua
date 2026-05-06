@@ -322,3 +322,30 @@ end
 
 
 M.VERSION = "1.2.0"
+
+--- Speciation: group networks by structural similarity (topology must match here).
+--- Returns a table of species, each containing an array of networks.
+--- Uses cosine similarity of serialized weights as the distance metric.
+function M.speciate(population, threshold)
+    threshold = threshold or 0.3
+    local nn = require('ai.neural_net')
+    local species = {}
+    for _, net in ipairs(population) do
+        local placed = false
+        for _, sp in ipairs(species) do
+            local rep = sp[1]
+            local pa = nn.serialize(net)
+            local pb = nn.serialize(rep)
+            local dot, na, nb = 0, 0, 0
+            for i = 1, #pa do dot=dot+pa[i]*pb[i]; na=na+pa[i]^2; nb=nb+pb[i]^2 end
+            local sim = dot / (math.sqrt(na) * math.sqrt(nb) + 1e-8)
+            if sim > (1 - threshold) then
+                table.insert(sp, net)
+                placed = true
+                break
+            end
+        end
+        if not placed then table.insert(species, {net}) end
+    end
+    return species
+end
