@@ -344,3 +344,16 @@ end
 
 
 M.VERSION = "1.2.0"
+
+--- Apply dropout to a layer output for regularization experiments.
+--- @param values table Layer activations
+--- @param rate number Fraction to zero out [0-1]
+--- @return table Modified activations
+function M.dropout(values, rate)
+    rate = rate or 0.1
+    local result = {}
+    for i, v in ipairs(values) do
+        result[i] = math.random() > rate and v or 0
+    end
+    return result
+end
