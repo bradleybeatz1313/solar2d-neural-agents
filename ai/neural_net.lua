@@ -357,3 +357,15 @@ function M.dropout(values, rate)
     end
     return result
 end
+
+--- Returns the min and max activation values of the output layer.
+--- Useful for debugging dead neurons.
+function M.output_range(network, inputs)
+    local outputs = M.forward(network, inputs)
+    local mn, mx = math.huge, -math.huge
+    for _, v in ipairs(outputs) do
+        if v < mn then mn = v end
+        if v > mx then mx = v end
+    end
+    return mn, mx
+end
