@@ -369,3 +369,16 @@ function M.output_range(network, inputs)
     end
     return mn, mx
 end
+
+--- Clamp all weights to [-clip, clip] to prevent weight explosion.
+function M.clip_weights(network, clip)
+    clip = clip or 5.0
+    for i = 1, #network.weights do
+        for j = 1, #network.weights[i] do
+            for k = 1, #network.weights[i][j] do
+                local w = network.weights[i][j][k]
+                network.weights[i][j][k] = math.max(-clip, math.min(clip, w))
+            end
+        end
+    end
+end
