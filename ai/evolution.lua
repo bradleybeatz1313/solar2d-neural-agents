@@ -349,3 +349,9 @@ function M.speciate(population, threshold)
     end
     return species
 end
+
+--- Age penalty: slightly reduce fitness of older networks to encourage novelty.
+function M.apply_age_penalty(network, penalty_per_gen)
+    penalty_per_gen = penalty_per_gen or 0.01
+    network.fitness = network.fitness * (1 - penalty_per_gen * network.generation)
+end
