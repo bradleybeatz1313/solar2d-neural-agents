@@ -355,3 +355,11 @@ function M.apply_age_penalty(network, penalty_per_gen)
     penalty_per_gen = penalty_per_gen or 0.01
     network.fitness = network.fitness * (1 - penalty_per_gen * network.generation)
 end
+
+--- Adaptive mutation: reduces strength as population converges.
+function M.adaptive_mutate(network, rate, base_strength, diversity)
+    local nn = require('ai.neural_net')
+    -- Higher diversity = less pressure to mutate
+    local strength = base_strength * (1 - math.min(diversity / 10, 0.8))
+    nn.mutate(network, rate, strength)
+end
