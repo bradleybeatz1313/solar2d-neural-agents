@@ -49,3 +49,7 @@ Config.LOG_DIVERSITY    = true  -- include diversity score in output
 Config.ADAPTIVE_MUTATION = true   -- scale mutation by diversity score
 Config.MIN_MUTATION_STRENGTH = 0.05
 Config.MAX_MUTATION_STRENGTH = 0.5
+
+-- Speciation
+Config.SPECIATION_ENABLED = false
+Config.SPECIATION_THRESHOLD = 0.3
