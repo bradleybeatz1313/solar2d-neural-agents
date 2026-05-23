@@ -118,3 +118,15 @@ Edit `config.lua` to tune the experiment:
 | Rank-based | SELECTION_STRATEGY=rank | Less scale-sensitive than roulette |
 | Adaptive mutation | ADAPTIVE_MUTATION=true | Scales noise with population diversity |
 | With speciation | SPECIATION_ENABLED=true | NEAT-style species isolation |
+
+---
+
+## Fitness Function
+
+The default fitness combines:
+
+- **Survival time** (0.4): agents that live longer score higher
+- **Distance traveled** (0.4): rewards exploration over staying still
+- **Efficiency** (0.2): penalizes erratic movement
+
+Weights are configurable in `config.lua` via `FITNESS_*_WEIGHT`.
