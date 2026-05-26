@@ -1,0 +1,9 @@
+# Solar2D / Corona
+/build/
+*.app/
+*.apk
+*.ipa
+
+# OS
+.DS_Store
+Thumbs.db

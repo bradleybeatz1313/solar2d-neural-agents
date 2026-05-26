@@ -1,0 +1,25 @@
+-- build.settings
+-- Solar 2D / Corona SDK build configuration
+
+settings = {
+    orientation = {
+        default = "landscapeRight",
+        supported = { "landscapeLeft", "landscapeRight" },
+    },
+
+    window = {
+        defaultMode = "normal",
+        resizable = true,
+        minViewWidth = 960,
+        minViewHeight = 540,
+        titleText = {
+            default = "Neural Agent Simulation",
+        },
+    },
+
+    build = {
+        neverStripDebugInfo = true,
+    },
+
+    plugins = {},
+}
